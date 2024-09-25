@@ -1,87 +1,79 @@
 package StackAndQueue;
 
 public class Queue<T> {
-    
-    T[] arr;
-    int front, rear;
-    int capacity;
 
-    Queue(int size) {
+    Node<T> front, rear;
 
-        arr = new T[size];
-        front = -1;
-        rear = -1;
-        capacity = size-1;
-    }
-
-    void enqueue(T element) {
-
-        if(isFull()) {
-            System.out.print("Queue Overflow");
-        }
-        else {
-            if(front == -1) {
-                front = 0;
-            }
-
-            arr[++rear] = element;
-        }
-    }
-
-    int dequeue() {
-
-        int element;
-        if(isEmpty()) {
-            System.out.println("Queue Underflow");
-            return -1;
-        }
-        else {
-
-            element = arr[front];
-
-            if(front >= rear) {
-                front = -1;
-                rear = -1;
-            }
-            else {
-                front++;
-            }
-        }
-        return element;
-    }
-
-    boolean isFull() {
-        if(front == 0 && rear == capacity) {
-            return true;
-        }
-        return false;
+    Queue() {
+        front = rear = null;
     }
 
     boolean isEmpty() {
-        if(front == -1) {
-            return true;
-        }
-        return false;
+        return front == null && rear == null;
     }
 
-    void printQueue() {
-        for(int i=front; i<=rear; i++) {
-            System.out.print(arr[i]+ " ");
+    void enqueue(T data) {
+        Node<T> new_node = new Node<>(data);
+
+        if (rear == null) {
+            front = rear = new_node;
+            return;
         }
+
+        rear.next = new_node;
+        rear = new_node;
+    }
+
+    void dequeue() {
+        if (isEmpty()) {
+            System.out.println("Stack Underflow");
+            return;
+        }
+        Node<T> temp = front;
+        front = front.next;
+        temp.next = null;
+
+        if (front == null) {
+            rear = null;
+        }
+    }
+
+    T getFront() {
+
+        if (isEmpty()) {
+            System.out.println("Queue is empty");
+        }
+        return front.data;
+    }
+
+    T getRear() {
+
+        if (isEmpty()) {
+            System.out.println("Queue is empty");
+        }
+        return rear.data;
     }
 
     public static void main(String[] args) {
-        
-        Queue queue = new Queue(5);
-        queue.enqueue(1);
-        queue.enqueue(2);
-        queue.enqueue(3);
-        queue.enqueue(4);
 
-        queue.printQueue();
-        System.out.println();
-        queue.dequeue();
-        queue.printQueue();
+        Queue<Integer> q = new Queue<>();
 
+        q.enqueue(10);
+        q.enqueue(20);
+
+        System.out.println("Queue Front: " + q.getFront());
+        System.out.println("Queue Rear: " + q.getRear());
+
+        q.dequeue();
+        q.dequeue();
+
+        q.enqueue(30);
+        q.enqueue(40);
+        q.enqueue(50);
+
+        q.dequeue();
+
+        System.out.println("Queue Front: " + q.getFront());
+        System.out.println("Queue Rear: " + q.getRear());
     }
 }

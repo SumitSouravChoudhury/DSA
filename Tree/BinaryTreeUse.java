@@ -60,41 +60,41 @@ public class BinaryTreeUse {
 
     public static int numNodes(BinaryTreeNode<Integer> root) {
 
-        if(root == null) {
+        if (root == null) {
             return 0;
         }
 
         int leftNode = numNodes(root.left);
         int rightNode = numNodes(root.right);
 
-        return 1+leftNode+rightNode;
+        return 1 + leftNode + rightNode;
     }
 
     public static void inorderTraversal(BinaryTreeNode<Integer> root) {
-      
+
         if (root == null)
             return;
-      
+
         inorderTraversal(root.left);
         System.out.print(root.data + " ");
         inorderTraversal(root.right);
     }
 
     public static void PreorderTraversal(BinaryTreeNode<Integer> root) {
-      
+
         if (root == null)
             return;
-      
+
         System.out.print(root.data + " ");
         PreorderTraversal(root.left);
         PreorderTraversal(root.right);
     }
 
     public static void PostorderTraversal(BinaryTreeNode<Integer> root) {
-      
+
         if (root == null)
             return;
-      
+
         PostorderTraversal(root.left);
         PostorderTraversal(root.right);
         System.out.print(root.data + " ");
@@ -102,7 +102,7 @@ public class BinaryTreeUse {
 
     public static int largest(BinaryTreeNode<Integer> root) {
 
-        if(root == null) {
+        if (root == null) {
             return -1;
         }
 
@@ -114,73 +114,73 @@ public class BinaryTreeUse {
 
     public static int height(BinaryTreeNode<Integer> root) {
 
-        if(root == null) {
+        if (root == null) {
             return 0;
         }
 
         int leftHeight = height(root.left);
         int rightHeight = height(root.right);
 
-        return 1+(Math.max(leftHeight, rightHeight));
+        return 1 + (Math.max(leftHeight, rightHeight));
     }
 
     public static int leafNodes(BinaryTreeNode<Integer> root) {
 
-        if(root == null) {
+        if (root == null) {
             return 0;
         }
-        if(root.left == null && root.right == null) {
+        if (root.left == null && root.right == null) {
             return 1;
         }
 
         int leftLeaf = leafNodes(root.left);
         int rightLeaf = leafNodes(root.right);
 
-        return leftLeaf+rightLeaf;
+        return leftLeaf + rightLeaf;
     }
 
     public static void printLeaf(BinaryTreeNode<Integer> root) {
 
-        if(root == null) {
+        if (root == null) {
             return;
         }
 
-        if(root.left == null && root.right == null) {
+        if (root.left == null && root.right == null) {
             System.out.print(root.data + " ");
             return;
         }
 
-        if(root.left != null) {
+        if (root.left != null) {
             printLeaf(root.left);
         }
 
-        if(root.right != null) {
+        if (root.right != null) {
             printLeaf(root.right);
         }
     }
 
     public static void printAtDepthK(BinaryTreeNode<Integer> root, int k) {
 
-        if(root == null) {
+        if (root == null) {
             return;
         }
 
-        if(k == 0) {
-            System.out.print(root.data+" ");
+        if (k == 0) {
+            System.out.print(root.data + " ");
             return;
         }
 
-        printAtDepthK(root.left, k-1);
-        printAtDepthK(root.right, k-1);
-    } 
+        printAtDepthK(root.left, k - 1);
+        printAtDepthK(root.right, k - 1);
+    }
 
     public static BinaryTreeNode<Integer> removeLeafNodes(BinaryTreeNode<Integer> root) {
 
-        if(root == null) {
+        if (root == null) {
             return null;
         }
 
-        if(root.left == null && root.right == null) {
+        if (root.left == null && root.right == null) {
             return null;
         }
 
@@ -192,13 +192,13 @@ public class BinaryTreeUse {
 
     public static void mirror(BinaryTreeNode<Integer> root) {
 
-        if(root == null) {
+        if (root == null) {
             return;
         }
 
         mirror(root.left);
         mirror(root.right);
-        
+
         BinaryTreeNode<Integer> temp = root.left;
         root.left = root.right;
         root.right = temp;
@@ -206,14 +206,14 @@ public class BinaryTreeUse {
 
     public static boolean isBalanced(BinaryTreeNode<Integer> root) {
 
-        if(root == null) {
+        if (root == null) {
             return true;
         }
 
         int leftHeight = height(root.left);
         int rightHeight = height(root.right);
 
-        if(Math.abs(leftHeight-rightHeight) > 1) {
+        if (Math.abs(leftHeight - rightHeight) > 1) {
             return false;
         }
 
@@ -225,7 +225,7 @@ public class BinaryTreeUse {
 
     public static int diameter(BinaryTreeNode<Integer> root) {
 
-        if(root == null) {
+        if (root == null) {
             return 0;
         }
 
@@ -235,8 +235,6 @@ public class BinaryTreeUse {
 
         return Math.max(option1, Math.max(option2, option3));
     }
-
-    
 
     public static void main(String[] args) {
 

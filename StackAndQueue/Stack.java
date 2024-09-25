@@ -1,69 +1,62 @@
 package StackAndQueue;
 
-public class Stack {
-    
-    private int[] arr;
-    private int capacity;
-    private int top;
+public class Stack<T> {
 
-    Stack(int size) {
+    Node<T> head;
 
-        arr = new int[size];
-        capacity = size;
-        top = -1;
-    }
-
-    void push(int element) {
-        if(isFull()) {
-            System.out.println("Stack Overflow");
-        }
-        else {
-            arr[++top] = element;
-        }
-    }
-
-    int pop() {
-        if(isEmpty()) {
-            System.out.println("Stack Underflow");
-            return -1;
-        }
-        return arr[top--];
-    }
-
-    boolean isFull() {
-        
-        return (top == capacity-1);
+    Stack() {
+        this.head = null;
     }
 
     boolean isEmpty() {
-        
-        return (top == -1);
+
+        return head == null;
     }
 
-    int peek() {
-        return arr[top];
+    void push(T data) {
+
+        Node<T> new_node = new Node<T>(data);
+
+        new_node.next = head;
+        head = new_node;
     }
 
-    int getSize() {
-        return top+1;
+    void pop() {
+
+        if (isEmpty()) {
+            System.out.println("System Underflow");
+            return;
+        } else {
+            Node<T> temp = head;
+            head = head.next;
+            temp.next = null;
+        }
     }
 
-    void printStack() {
+    T peek() {
 
-        for(int i=0; i<=top; i++) {
-            System.out.print(arr[i] + " ");
+        if (!isEmpty()) {
+            return head.data;
+        } else {
+            System.out.println("Stack is Empty");
+            return head.data;
         }
     }
 
     public static void main(String[] args) {
-        
-        Stack stack = new Stack(5);
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        stack.push(4);
 
-        stack.pop();
-        stack.printStack();
+        Stack<Integer> st = new Stack<>();
+        st.push(11);
+        st.push(22);
+        st.push(33);
+        st.push(44);
+
+        System.out.println("Top element is " + st.peek());
+
+        System.out.println("Removing two elements...");
+        st.pop();
+        st.pop();
+
+        System.out.println("Top element is " + st.peek());
     }
 }

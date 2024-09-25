@@ -32,17 +32,16 @@ public class LinkedListUse {
 
         Node<Integer> nodeInserted = new Node<>(ele);
 
-        if(pos == 0) {
+        if (pos == 0) {
 
             nodeInserted.next = head;
             return nodeInserted;
-        }
-        else {
+        } else {
 
             Node<Integer> prev = head;
             int count = 0;
 
-            while(count<pos-1 && prev!=null) {
+            while (count < pos - 1 && prev != null) {
                 count++;
                 prev = prev.next;
             }
@@ -56,7 +55,7 @@ public class LinkedListUse {
 
     public static Node<Integer> delete(Node<Integer> head, int pos) {
 
-        if(pos == 0) {
+        if (pos == 0) {
             head = head.next;
             return head;
         }
@@ -64,7 +63,7 @@ public class LinkedListUse {
         Node<Integer> prev = head;
         int count = 0;
 
-        while(count < pos-1 && prev != null) {
+        while (count < pos - 1 && prev != null) {
             count++;
             prev = prev.next;
         }
@@ -78,13 +77,13 @@ public class LinkedListUse {
 
         Node<Integer> curr = head, prev = null, next;
 
-        while(curr != null) {
-            next = head.next;
+        while (curr != null) {
+            next = curr.next;
             curr.next = prev;
             prev = curr;
             curr = next;
         }
-    
+
         return prev;
     }
 
@@ -92,7 +91,7 @@ public class LinkedListUse {
 
         Node<Integer> slow = head, fast = head;
 
-        while(fast.next!=null && fast.next.next!=null) {
+        while (fast.next != null && fast.next.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
@@ -106,41 +105,38 @@ public class LinkedListUse {
             return head2;
         }
 
-        if(head2 == null) {
+        if (head2 == null) {
             return head1;
         }
 
         Node<Integer> t1 = head1, t2 = head2, head = null, tail = null;
 
-        if(t1.data <= t2.data) {
+        if (t1.data <= t2.data) {
             head = t1;
             tail = t1;
             t1 = t1.next;
-        }
-        else {
+        } else {
             head = t2;
             tail = t2;
             t2 = t2.next;
         }
 
-        while(t1!=null && t2!=null) {
+        while (t1 != null && t2 != null) {
 
-            if(t1.data <= t2.data) {
+            if (t1.data <= t2.data) {
                 tail.next = t1;
                 tail = t1;
                 t1 = t1.next;
-            }
-            else {
+            } else {
                 tail.next = t2;
                 tail = t2;
                 t2 = t2.next;
             }
         }
 
-        if(t1 != null) {
+        if (t1 != null) {
             tail.next = t1;
-        }
-        else {
+        } else {
             tail.next = t2;
         }
 
