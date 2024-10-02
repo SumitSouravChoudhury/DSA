@@ -2,10 +2,10 @@ package Algorithms;
 
 import java.util.*;
 
-public class PairWithGivenSum {
+public class CountSubarrayWithGivenSum {
 
     public static void main(String[] args) {
-        @SuppressWarnings("resource")
+
         Scanner s = new Scanner(System.in);
 
         int n = s.nextInt();
@@ -14,26 +14,25 @@ public class PairWithGivenSum {
         for (int i = 0; i < n; i++) {
             arr[i] = s.nextInt();
         }
-
-        int sum = s.nextInt();
+        int target_sum = s.nextInt();
+        s.close();
 
         HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(0, 1);
+        int cur_sum = 0;
         int count = 0;
 
         for (int i = 0; i < n; i++) {
 
-            if (map.containsKey(sum - arr[i])) {
-                count += map.get(sum - arr[i]);
+            cur_sum += arr[i];
+
+            if (map.containsKey(cur_sum - target_sum)) {
+                count += map.get(cur_sum - target_sum);
             }
 
-            if (map.containsKey(arr[i])) {
-                map.put(arr[i], map.get(arr[i]) + 1);
-            } else {
-                map.put(arr[i], 1);
-            }
+            map.put(cur_sum, map.getOrDefault(cur_sum, 0) + 1);
         }
 
         System.out.println(count);
     }
-
 }
