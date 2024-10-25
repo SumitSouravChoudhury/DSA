@@ -9,9 +9,9 @@ public class KthLargest {
         int pivot = arr[high];
         int i = low - 1;
 
-        for (int j = low; j < high; j++) {
+        for (int j = low; j <= high; j++) {
 
-            if (arr[j] >= pivot) {
+            if (arr[j] > pivot) {
                 i++;
 
                 int temp = arr[i];
@@ -35,10 +35,10 @@ public class KthLargest {
 
             if (pi == k - 1) {
                 return arr[pi];
-            } else if (pi > k - 1) {
-                return quickselect(arr, low, pi - 1, k);
+            } else if (pi < k - 1) {
+                return quickselect(arr, pi+1, high, k);
             } else {
-                return quickselect(arr, pi + 1, high, k);
+                return quickselect(arr, low, pi-1, k);
             }
         }
 
