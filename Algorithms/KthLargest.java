@@ -36,9 +36,9 @@ public class KthLargest {
             if (pi == k - 1) {
                 return arr[pi];
             } else if (pi < k - 1) {
-                return quickselect(arr, pi+1, high, k);
+                return quickselect(arr, pi + 1, high, k);
             } else {
-                return quickselect(arr, low, pi-1, k);
+                return quickselect(arr, low, pi - 1, k);
             }
         }
 
