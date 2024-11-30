@@ -8,7 +8,7 @@ interface B {
     int b = 20;
 }
 
-class MultipleInheritance implements A, B {
+public class MultipleInheritance implements A, B {
 
     public static void main(String[] args) {
 
