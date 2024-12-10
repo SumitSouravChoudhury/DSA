@@ -1,33 +1,33 @@
 package Algorithms;
 
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Anagram {
 
-    public static boolean checkAnagram(String str1, String str2) {
+    public static boolean checkAnagram(String s, String t) {
 
-        if (str1.length() != str2.length()) {
+        if (s.length() != t.length()) {
             return false;
         }
 
-        char[] ch1 = str1.toCharArray();
-        char[] ch2 = str2.toCharArray();
+        HashMap<Character, Integer> map = new HashMap<>();
 
-        HashSet<Character> set = new HashSet<>();
-        int curr_size = 0;
+        for (int i = 0; i < s.length(); i++) {
 
-        for (int i = 0; i < ch1.length; i++) {
-            set.add(ch1[i]);
+            map.put(s.charAt(i), map.getOrDefault(s.charAt(i), 0) + 1);
         }
 
-        curr_size = set.size();
+        for (int i = 0; i < t.length(); i++) {
 
-        for (int i = 0; i < ch2.length; i++) {
-            set.add(ch2[i]);
+            if (!map.containsKey(t.charAt(i)) || map.get(t.charAt(i)) == 0) {
+                return false;
+            }
+
+            map.put(t.charAt(i), map.get(t.charAt(i)) - 1);
         }
 
-        return (set.size() == curr_size);
+        return true;
     }
 
     public static void main(String[] args) {
