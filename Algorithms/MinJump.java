@@ -6,26 +6,23 @@ public class MinJump {
 
     public static int minimumJump(int[] arr, int n) {
 
-        if (n == 0 || arr[0] == 0) {
-            return Integer.MAX_VALUE;
-        }
+        int far = 0, near = 0, jumps = 0;
 
-        int[] jumps = new int[n];
-        jumps[0] = 0;
+        while (far < arr.length - 1) {
 
-        for (int i = 1; i < n; i++) {
-            jumps[i] = Integer.MAX_VALUE;
+            int farthest = 0;
 
-            for (int j = 0; j < i; j++) {
+            for (int i = near; i <= far; i++) {
 
-                if (i <= j + arr[j] && jumps[j] != Integer.MAX_VALUE) {
-                    jumps[i] = Math.min(jumps[i], jumps[j] + 1);
-                    break;
-                }
+                farthest = Math.max(farthest, i + arr[i]);
             }
+
+            near = far + 1;
+            far = farthest;
+            jumps++;
         }
 
-        return jumps[n - 1];
+        return jumps;
     }
 
     public static void main(String[] args) {
