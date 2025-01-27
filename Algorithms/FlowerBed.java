@@ -12,11 +12,12 @@ public class FlowerBed {
             boolean right = i == flowerBed.length - 1 || flowerBed[i + 1] == 0;
 
             if (left && right && flowerBed[i] == 0) {
-                return true;
+                flowerBed[i] = 1;
+                e--;
             }
         }
 
-        return false;
+        return e <= 0;
     }
 
     public static void main(String[] args) {
