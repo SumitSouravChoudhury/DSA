@@ -9,20 +9,20 @@ public class BubbleSort {
         int n = arr.length;
         boolean swapped;
 
-        for(int i=0; i<n-1; i++) {
+        for (int i = 0; i < n - 1; i++) {
 
             swapped = false;
 
-            for(int j=0; j<n-i-1; j++){
-                if(arr[j] > arr[j+1]) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
                     swapped = true;
                     int temp = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1] = temp;
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
             }
 
-            if(swapped == false) {
+            if (swapped == false) {
                 break;
             }
         }
@@ -30,9 +30,9 @@ public class BubbleSort {
 
     public void printArray(int[] arr, int n) {
 
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
 
-            System.out.print(arr[i]+" ");
+            System.out.print(arr[i] + " ");
         }
         System.out.println();
     }
@@ -45,7 +45,7 @@ public class BubbleSort {
         int n = s.nextInt();
         int[] arr = new int[n];
 
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             arr[i] = s.nextInt();
         }
 
