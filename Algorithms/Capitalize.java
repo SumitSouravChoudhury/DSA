@@ -4,29 +4,46 @@ import java.util.Scanner;
 
 public class Capitalize {
 
+    public static String capitalize(String str) {
+
+        char[] ch = str.toCharArray();
+        for (int i = 0; i < str.length(); i++) {
+
+            boolean flag = false;
+
+            if (i == 0 && ch[i] != ' ') {
+                ch[i] = Character.toUpperCase(ch[i]);
+                flag = true;
+            }
+            if ((i > 0 && ch[i] != ' ' && ch[i - 1] == ' ')
+                    || (i < str.length() - 1 && ch[i] != ' ' && ch[i + 1] == ' ')) {
+                ch[i] = Character.toUpperCase(ch[i]);
+                flag = true;
+            }
+            if (i == str.length() - 1 && ch[i] != ' ') {
+                ch[i] = Character.toUpperCase(ch[i]);
+                flag = true;
+            }
+
+            if (!flag) {
+                ch[i] = Character.toLowerCase(ch[i]);
+            }
+
+        }
+
+        return new String(ch);
+
+    }
+
     public static void main(String[] args) {
 
-        @SuppressWarnings("resource")
         Scanner s = new Scanner(System.in);
 
         String str = s.nextLine();
 
-        char[] ch = str.toCharArray();
+        String cap = capitalize(str);
+        System.out.println(cap);
 
-        ch[0] = Character.toUpperCase(ch[0]);
-
-        for (int i = 0; i < ch.length; i++) {
-
-            if (ch[i] == ' ') {
-                ch[i - 1] = Character.toUpperCase(ch[i - 1]);
-                ch[i + 1] = Character.toUpperCase(ch[i + 1]);
-            }
-        }
-
-        ch[ch.length - 1] = Character.toUpperCase(ch[ch.length - 1]);
-
-        String result = new String(ch);
-
-        System.out.println(result);
+        s.close();
     }
 }

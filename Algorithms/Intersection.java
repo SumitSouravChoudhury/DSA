@@ -25,6 +25,7 @@ public class Intersection {
 
         return result;
     }
+
     public static void main(String[] args) {
         @SuppressWarnings("resource")
         Scanner s = new Scanner(System.in);
@@ -34,17 +35,17 @@ public class Intersection {
         int n2 = s.nextInt();
         int[] arr2 = new int[n2];
 
-        for(int i=0; i<n1; i++) {
+        for (int i = 0; i < n1; i++) {
             arr1[i] = s.nextInt();
         }
-        for(int i=0; i<n2; i++) {
+        for (int i = 0; i < n2; i++) {
             arr2[i] = s.nextInt();
         }
 
         ArrayList<Integer> ans = findIntersection(arr1, arr2, n1, n2);
 
-        for(int i : ans) {
-            System.out.print(i+" ");
+        for (int i : ans) {
+            System.out.print(i + " ");
         }
 
     }

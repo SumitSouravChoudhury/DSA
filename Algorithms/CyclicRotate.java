@@ -1,8 +1,30 @@
 package Algorithms;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class CyclicRotate {
+
+    public static void reverse(int[] arr, int start, int end) {
+
+        while (start < end) {
+
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
+    public static void cyclicRotate(int[] arr, int d) {
+
+        int n = arr.length;
+        d = d % n;
+
+        reverse(arr, 0, n - 1);
+        reverse(arr, 0, d - 1);
+        reverse(arr, d, n - 1);
+    }
 
     public static void main(String[] args) {
 
@@ -10,23 +32,13 @@ public class CyclicRotate {
 
         int n = s.nextInt();
         int[] arr = new int[n];
-
         for (int i = 0; i < n; i++) {
             arr[i] = s.nextInt();
         }
+        int d = s.nextInt();
+
+        cyclicRotate(arr, d);
+
         s.close();
-
-        int first = arr[n - 1];
-        int[] temp = new int[n];
-
-        for (int i = 1; i < n; i++) {
-            temp[i] = arr[i - 1];
-        }
-
-        temp[0] = first;
-
-        for (int x : temp) {
-            System.out.print(x + " ");
-        }
     }
 }
