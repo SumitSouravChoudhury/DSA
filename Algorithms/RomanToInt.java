@@ -3,9 +3,9 @@ package Algorithms;
 import java.util.*;
 
 public class RomanToInt {
-    
+
     public static void main(String[] args) {
-        
+
         @SuppressWarnings("resource")
         Scanner s = new Scanner(System.in);
 
@@ -23,12 +23,11 @@ public class RomanToInt {
 
         int ans = 0;
 
-        for(int i=0; i<str.length(); i++) {
+        for (int i = 0; i < str.length(); i++) {
 
-            if(i<str.length()-1 && (map.get(str.charAt(i)) < map.get(str.charAt(i+1)))) {
-                ans -= map.get(str.charAt(i)); 
-            }
-            else {
+            if (i < str.length() - 1 && (map.get(str.charAt(i)) < map.get(str.charAt(i + 1)))) {
+                ans -= map.get(str.charAt(i));
+            } else {
                 ans += map.get(str.charAt(i));
             }
         }

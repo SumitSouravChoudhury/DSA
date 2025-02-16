@@ -16,7 +16,11 @@ public class PrintCountOfCharacters {
         }
 
         for (int i = 0; i < temp.length; i++) {
-            System.out.println((char) ('a' + i) + ": " + temp[i]);
+
+            if (temp[i] != 0) {
+                System.out.println((char) ('a' + i) + ": " + temp[i]);
+            }
+
         }
     }
 

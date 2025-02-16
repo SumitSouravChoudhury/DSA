@@ -4,22 +4,27 @@ import java.util.*;
 
 public class DecimalToBinary {
 
+    public static String decToBin(int dec) {
+
+        StringBuilder sb = new StringBuilder();
+
+        while (dec > 0) {
+            int rem = dec % 2;
+            sb.insert(0, rem);
+            dec /= 2;
+        }
+
+        return new String(sb);
+    }
+
     public static void main(String[] args) {
 
-        @SuppressWarnings("resource")
         Scanner s = new Scanner(System.in);
 
-        int decimal = s.nextInt();
-        ArrayList<Integer> ans = new ArrayList<>();
+        int dec = s.nextInt();
 
-        while (decimal > 0) {
-            int temp = decimal % 2;
-            ans.add(temp);
-            decimal = decimal / 2;
-        }
-
-        for (int i = ans.size() - 1; i >= 0; i--) {
-            System.out.print(ans.get(i) + " ");
-        }
+        String bin = decToBin(dec);
+        System.out.println(bin);
+        s.close();
     }
 }
