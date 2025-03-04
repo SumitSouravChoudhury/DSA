@@ -17,6 +17,10 @@ public class MinJump {
                 farthest = Math.max(farthest, i + arr[i]);
             }
 
+            if(farthest <= far) {
+                return -1;
+            }
+
             near = far + 1;
             far = farthest;
             jumps++;
